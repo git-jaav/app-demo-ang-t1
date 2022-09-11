@@ -1,0 +1,66 @@
+<mat-toolbar>Registros de Encuestas</mat-toolbar>
+
+
+<button mat-fab color="primary" style="float: right" (click)="refrescarListado()">
+    <mat-icon>refresh</mat-icon>
+</button>
+
+
+<div class="example-container"  >
+
+  <div class="example-header">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Buscar Registro">
+    </mat-form-field>
+  </div>
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+      <td mat-cell *matCellDef="let row"> {{row.enperEncuestaPersonaId}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Nombre_completo">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre Completo </th>
+      <td mat-cell *matCellDef="let row"> {{row.enperNombrecompleto}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="Cod_Usuario">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Usuario </th>
+      <td mat-cell *matCellDef="let row"> {{row.enperCodigoUsuario}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Correo">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Correo </th>
+      <td mat-cell *matCellDef="let row"> {{row.enperEmail}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="fecha">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha Registro </th>
+      <td mat-cell *matCellDef="let row"> {{row.enperFechaRegistro | date: 'dd/MM/yyyy'}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="acciones">
+      <th mat-header-cell *matHeaderCellDef>Acciones</th>
+      <td mat-cell *matCellDef="let row">
+        <span>
+          <button mat-icon-button (click)="eliminarRegistro(row.enperEncuestaPersonaId)">
+            <mat-icon>delete</mat-icon>
+          </button>
+          <button mat-icon-button (click)="editarRegistro(row.enperEncuestaPersonaId)">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </span>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+    </tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [length]="totalElementos" (page)="mostrarMas($event)">
+  </mat-paginator>
+</div>
