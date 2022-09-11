@@ -10,7 +10,7 @@ export const environment = {
 export const api = {
 
   domain_api: "http://20.241.181.227/",
-  domain_api_proxy: "http://20.241.181.227/"
+  domain_api_proxy: "https://my-webapp-demo-dev.azurewebsites.net/"
   //domain_api: "http://loadbalancer-me-v1-125389634.us-east-1.elb.amazonaws.com/api/business/miniencuesta/v1/"
   //domain_api: "https://wfjy05poxe.execute-api.us-east-1.amazonaws.com/dev/api/business/miniencuesta/v1/"
   
